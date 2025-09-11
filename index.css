@@ -33,18 +33,21 @@ p {
   margin-bottom: 25px;
   max-width: 550px;
 }
-button {
-  background-color: #b22222;
+.btn {
+  display: inline-block;
+  background: #b22222;
   color: #fff;
+  padding: 12px 28px;
+  border-radius: 25px;
   font-size: 16px;
   font-weight: 600;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-button:hover {
-  background-color: #8b1a1a;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+
+.btn:hover {
+  background: #8b1a1a;
+  transform: translateY(-2px);
 }
 img {
   display: flex;
