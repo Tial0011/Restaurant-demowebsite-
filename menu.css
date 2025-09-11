@@ -77,7 +77,7 @@ button {
 }
 .minus {
   position: relative;
-  left: 40px;
+  left: 5px;
 }
 .minus:hover {
   background: rgb(150, 66, 66);
@@ -96,15 +96,8 @@ button {
   gap: 8px;
   align-items: end;
 }
-.qty-input {
-  width: 40px;
-  text-align: left;
-  padding: 6px;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  background: none;
-  outline: none;
+.quantity {
   position: relative;
-  left: 31px;
+  bottom: 4px;
+  left: 2px;
 }
