@@ -38,7 +38,7 @@ card.innerHTML = menuData
     (item) => `
         <div class="afood">
           <img src="${item.foodimage}" />
-            <div class="info">${item.title}
+            <div class="info"><span class="titlename">${item.title}</span>
               <br />
               <div class="priceRow">
                   <span class="price">
@@ -56,12 +56,14 @@ card.innerHTML = menuData
       `
   )
   .join("");
+// let cart = JSON.parse(localStorage.getItem("cart")) || [];
 document.querySelectorAll(".afood").forEach((food) => {
   const qtyDiv = food.querySelector(".quantity");
   const plusBtn = food.querySelector(".plus");
   const minusBtn = food.querySelector(".minus");
   const price = food.querySelector(".price");
   const usedprice = Number(price.textContent.replace("₦", ""));
+  const crtbtn = food.querySelector(".crtbtn");
   let qty = 0;
   plusBtn.addEventListener("click", () => {
     qty++;
@@ -73,6 +75,30 @@ document.querySelectorAll(".afood").forEach((food) => {
       qty--;
       qtyDiv.textContent = qty;
       if (qty != 0) price.textContent = `₦${usedprice * qty}`;
+    }
+  });
+  crtbtn.addEventListener("click", () => {
+    if (qty > 0) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const title = food.querySelector(".titlename").textContent.trim();
+      const existing = cart.find((item) => item.title === title);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          title: title,
+          price: usedprice,
+          qty: qty,
+        });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      let addedmsg = document.createElement("span");
+      addedmsg.textContent = "Added To Cart";
+      addedmsg.classList.add("addedmsg");
+      crtbtn.parentElement.appendChild(addedmsg);
+      setTimeout(() => {
+        addedmsg.remove();
+      }, 1300);
     }
   });
 });
