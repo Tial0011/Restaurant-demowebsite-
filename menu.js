@@ -5,7 +5,7 @@ const menuData = [
   {
     id: 1,
     foodimage: "images/PoundedYam.jpg",
-    title: "Pounded Yam And Efo",
+    title: "Pounded Yam",
     price: 2000,
   },
   {
